@@ -56,7 +56,9 @@ export abstract class AbstractActionHandler {
       }
       // Block sequence consistency should be handled by the ActionReader instance
       if (blockInfo.previousBlockHash !== this.lastProcessedBlockHash) {
-        throw Error("Block hashes do not match; block not part of current chain.")
+        await this.handleHashMismatch(blockInfo.blockNumber - 1);
+        await this.refreshIndexState();
+        // throw Error("Block hashes do not match; block not part of current chain.")
       }
     }
 
@@ -131,6 +133,8 @@ export abstract class AbstractActionHandler {
    * number passed to this method.
    */
   protected abstract async rollbackTo(blockNumber: number): Promise<void>
+
+  protected abstract async handleHashMismatch(blockNumber: number): Promise<void>
 
   /**
    * Calls `runUpdaters` and `runEffects` on the given actions

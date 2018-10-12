@@ -9,7 +9,7 @@
   "description": "Deterministic event-sourced state and side effect handling for blockchain applications",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/EOSIO/demux-js",
+  "repository": "https://github.com/amitmaurya/demux-js",
   "devDependencies": {
     "@types/jest": "^23.1.4",
     "@types/node": "^10.5.1",
@@ -26,6 +26,7 @@
     "typescript": "^2.9.2"
   },
   "scripts": {
+    "install": "tsc",
     "compile": "tsc",
     "watch": "tsc -w",
     "example": "./run-example.sh",
