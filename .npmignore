@@ -1,6 +1,0 @@
-dist/**/*.test.*
-examples/
-docs/
-.idea
-yarn-error.log
-README.md
